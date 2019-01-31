@@ -3,8 +3,6 @@
 
 Ajax is the backbone of interactive high-performance web apps.
 
-
-
 ### Prerequisite
 We are going to use 2 API for the data contents
 
@@ -41,5 +39,4 @@ XHR Object also specifies a readyStateChange Event, so once the event is fired, 
 
 
 ### Demo
-
 [Demo Link](https://vanilla-javascript-ajax-app.herokuapp.com/)
