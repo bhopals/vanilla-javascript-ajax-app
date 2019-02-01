@@ -6,7 +6,7 @@
 	var httpRequest;
 	
 	makeRequest();
-	
+
 	// create and send an XHR Request
 	function makeRequest(){
 		httpRequest = new XMLHttpRequest();
@@ -22,5 +22,13 @@
 			console.log(httpRequest.responseText);
 		}
 	}
+
+	function onChangeData(e) {
+		if(e.currentTraget.classList.contains('change-data')){
+			console.log("TEST On Change Data");
+		}
+	}
+
+	
 })();
 
