@@ -13,8 +13,18 @@ To use both of these API's, we must login and create API Keys on both sites so i
 
 
 ### XMLHttpRequest (XHR) Methods
+XMLHttpRequest (XHR) is an API in the form of an object whose methods transfer data between a web browser and a web server. The object is provided by the browser's JavaScript environment.
 
+```
+    var xmlhttp;
 
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", filepath, false);
+        xmlhttp.send(null);
+    }
+
+```
 open() - Open a connection with specified endpoint, but doesn't actually send the HTTPRequest.
     -   Specify HTTP verb
     -   Specify target URL
@@ -31,6 +41,20 @@ Once the Request is sent, the value of the **readyState** property indicates the
         4 - Request complete
 
 XHR Object also specifies a readyStateChange Event, so once the event is fired, we can check the request status by using **readyStatus===4** to ensure the request is completed.
+
+```
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        var DONE = this.DONE || 4;
+        if (this.readyState === DONE){
+            alert(this.readyState);
+        }
+    };
+    request.open('GET', 'somepage.xml', true);
+    request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');  
+    request.send(null);  
+
+```
 
 #### Create an XHR Request.
 
