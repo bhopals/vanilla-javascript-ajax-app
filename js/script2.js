@@ -23,12 +23,7 @@
 		}
 	}
 
-	function onChangeData(e) {
-		if(e.currentTraget.classList.contains('change-data')){
-			console.log("TEST On Change Data");
-		}
-	}
 
-	
+
 })();
 
