@@ -6,7 +6,7 @@ Ajax is the backbone of interactive high-performance web apps.
 ### Prerequisite
 We are going to use 2 API for the data contents
 
-    -   OpenWwatherMap (OpenWeatherMap.org) - To Obtain the weather details of passed location.
+    -   OpenWeatherMap (OpenWeatherMap.org) - To Obtain the weather details of passed location.
     -   EventBrite (EventBriter.com) - Nearby Event details.
 
 To use both of these API's, we must login and create API Keys on both sites so it would allow us to fetch data from these API's via AJAX call.
@@ -58,8 +58,25 @@ XHR Object also specifies a readyStateChange Event, so once the event is fired, 
 
 #### Create an XHR Request.
 
+Below is the code snippet to create XMLHttpRequest.
 
+```
+var httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = responseMethod;
+httpRequest.open('GET', '<URL>'+'&apiId='+apiKey);
+httpReuest.send();
 
+function responseMethod() {
+    if(httpRequest.readState === 4){
+        if(httpRequest.status === 2000) {
+            //Success Callback
+        } else {
+            //ERROR Callback
+        }
+    }
+}
+
+```
 
 
 ### Demo

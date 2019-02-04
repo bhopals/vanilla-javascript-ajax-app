@@ -12,8 +12,7 @@
 		httpRequest = new XMLHttpRequest();
 		httpRequest.onreadystatechange = responseMethod;
 		httpRequest.open('GET', url+'&appid='+apiKey);
-		httpRequest.send();
-		
+		httpRequest.send();		
 	}
 
 	//handle XHR Response
