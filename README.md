@@ -102,5 +102,23 @@ Fetch("<URL>").then(function(response){
 
 ```
 
+### Working with Ajax in JQUERY
+
+Below is the sample version
+
+```
+$.get(url+'&appid='+apiKey).done(function(response){
+    //Jquery automatically parse returned response into JSON object
+    //hence  response.json(), the one we used in FETCH API, should be ignored here 
+    updatedUISuccess(response);
+}).fail(function(error){
+    updateUIError();
+});
+
+
+```
+
+
+
 ### Demo
 [Demo Link](https://vanilla-javascript-ajax-app.herokuapp.com/)
