@@ -78,6 +78,29 @@ function responseMethod() {
 
 ```
 
+Above approach present a challenge called **Callback Hell**
+
+#### Fetch API
+
+Fetch Api comes with various benefits as at the time of invocation it calls various XHR methods implicitly, hence we do not need to call them explicitly.
+
+```
+
+Example Code:
+
+var httpRequest = new XMLHttpRequest();
+httpRequest.onreadystatechange = responseMethod;
+httpRequest.open('GET', '<URL>'+'&apiId='+apiKey);
+httpReuest.send();
+
+
+IS Same as 
+
+Fetch("<URL>").then(function(response){
+    responseMethod(response);
+})
+
+```
 
 ### Demo
 [Demo Link](https://vanilla-javascript-ajax-app.herokuapp.com/)
