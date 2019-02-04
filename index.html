@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Landon Hotel</title>
+  <script src="js/angular.min.js"></script>
+  <script src="js/controllers.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
@@ -30,7 +32,6 @@
       </div><!-- navbar -->
     </nav>
   </header>
-
 <main id="wrapper">
   <div class="scene" id="welcome">
     <article class="content">
@@ -44,7 +45,6 @@
       <h1>Welcome to the Landon&nbsp;Hotel</h1>
       <p>The original Landon perseveres after 50 years in the heart of West London. The West End neighborhood has something for everyone&mdash;from theater to dining to historic sights. And the not-to-miss Rooftop Cafe is a great place for travelers and locals to engage over drinks, food, and good&nbsp;conversation.</p>
     </article>
-
   </div><!-- welcome -->
   <div class="scene" id="hotelinfo">
     <article class="heading">
@@ -62,7 +62,6 @@
           <li><strong>Pet Policy:</strong> Pets of all sizes and types are allowed in designated pet rooms, and the specified common areas. Service animals are allowed everywhere.</li>
         </ul>
       </section>
-
       <section class="checklist" id="services">
         <h2>Services and Amenities</h2>
         <p>Our services and amenities are designed to make your travel easy, your stay comfortable, and your experience one-of-a-kind.</p>
@@ -84,7 +83,6 @@
           <li>Pet-friendly rooms  &amp; common areas</li>
         </ul>
       </section>
-      
       <section class="checklist" id="accessibility">
         <h2>Accessibility</h2>
         <p>We're committed to maintaining the same quality of service for every individual. We offer the following facilities for those with special needs:</p>
@@ -195,10 +193,41 @@
         </div><!-- content -->
       </article><!-- article -->
   </div><!-- events -->
-  <div class="scene fullheight" id="attractions">
-    <article class="content">
+  <div class="scene fullheight" id="attractions" ng-app="listApp" ng-controller="ListController as eventsList">
+    <article class="content"  ng-if="eventsList.showError">
       <h1>Local Attractions</h1>
-        <p>Whether you’re a theater enthusiast, enjoy epic shopping, or love to stroll and people watch, London’s West End has an endless opportunity to partake. The heart of London’s "Theatreland" offering the best in drama, comedy, and musical productions.</p>
+      <p>Whether you’re a theater enthusiast, enjoy epic shopping, or love to stroll and people watch, London’s West End has an endless opportunity to partake. The heart of London’s "Theatreland" offering the best in drama, comedy, and musical productions.</p>
+    </article>
+    <article class="content" ng-if="!eventsList.showError">
+        <h1>Upcoming Events in London</h1>
+        <div class="main">
+          <div class="search">
+            <label>search: </label>
+            <input ng-model="query" placeholder="Search for events" autofocus>
+            <label class="formgroup">by:
+              <select ng-model="eventOrder" ng-init="eventOrder='start.local'">
+                <option value="start.local">Date</option>
+                <option value="name.text">Name</option>
+              </select>
+            </label>
+            <label class="formgroup">
+              <input type="radio" ng-model="direction" name="direction" checked>
+              ascending
+            </label>
+            <label class="formgroup">
+              <input type="radio" ng-model="direction" name="direction" value="reverse">
+              descending
+            </label>
+          </div>
+          <ul class="eventlist">
+            <li class="event cf" ng-repeat="item in eventsList.events | filter: query | orderBy: eventOrder:direction">
+              <div class="info">
+                <h2><a href="{{item.url}}" target="_blank">{{item.name.text}}</a></h2>
+                <p>{{item.start.local | date:"dd MMMM ', ' h:mma"}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
     </article>
   </div><!-- attractions -->
 </main>
@@ -216,7 +245,8 @@
   <script src="js/promise.min.js"></script>
   <script src="js/fetch.js"></script>
   <script src="js/script.js"></script>
+  
   <script src="js/jquery-3.1.1.min.js"></script>
-  <script src="js/script2.js"></script>
+<!--  <script src="js/script2.js"></script>-->
 </body>
 </html>

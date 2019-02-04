@@ -115,10 +115,29 @@ $.get(url+'&appid='+apiKey).done(function(response){
     updateUIError();
 });
 
+```
+
+
+
+### Ajax in Angular and REACT
+
+
+```
+GENERIC Syntax              Ajax-Specific Syntax
+
+$http()                     $http()
+    .then()                     .success()
+    .catch()                    .error()
 
 ```
 
 
+### Structure Ajax Requests
+
+    -   XHR
+    -   Fetch
+    -   Library (Jquery, React)
+    -   Framework (Angular)
 
 ### Demo
 [Demo Link](https://vanilla-javascript-ajax-app.herokuapp.com/)
