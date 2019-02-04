@@ -139,5 +139,13 @@ $http()                     $http()
     -   Library (Jquery, React)
     -   Framework (Angular)
 
+#### Ajax Error Requests
+
+    -2xx - Success
+    -3xx - Multiple options/redirections/resources not modified
+    -400 - Client Errors
+    -500 - Server Error / Network errors/ timeout/ gateway errors
+
+
 ### Demo
 [Demo Link](https://vanilla-javascript-ajax-app.herokuapp.com/)
